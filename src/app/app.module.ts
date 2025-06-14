@@ -39,6 +39,9 @@ import { ContentComponent } from './components/content/content.component';
 import { SnippetComponent } from './components/docs/snippet/snippet.component';
 import { FolderIconComponent } from './components/docs/icons/folder-icon/folder-icon.component';
 import { AngularIconComponent } from './components/docs/icons/angular-icon/angular-icon.component';
+import { ChatBotIconComponent } from './dashboard/icons/chat-bot-icon/chat-bot-icon.component';
+import { ChatbotComponent } from './pages/chatbot/chatbot.component';
+import { CustomWidgetComponent } from './pages/custom-widget/custom-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -78,6 +81,9 @@ import { AngularIconComponent } from './components/docs/icons/angular-icon/angul
     ContentComponent,
     FolderIconComponent,
     AngularIconComponent,
+    ChatBotIconComponent,
+    ChatbotComponent,
+    CustomWidgetComponent
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],

@@ -9,6 +9,8 @@ import { TerminalComponent } from './pages/terminal/terminal.component';
 import { RecycleBinComponent } from './pages/recycle-bin/recycle-bin.component';
 import { DocumentationComponent } from './pages/documentation/documentation.component';
 import { SettingsComponent } from './pages/settings/settings.component';
+import { ChatbotComponent} from './pages/chatbot/chatbot.component';
+import { CustomWidgetComponent} from './pages/custom-widget/custom-widget.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -19,6 +21,8 @@ const routes: Routes = [
   { path: 'admin/servers', component: ServerComponent },
   { path: 'admin/settings', component: SettingsComponent },
   { path: 'admin/documentation', component: DocumentationComponent },
+  { path: 'chatwidget', component: ChatbotComponent},
+  { path: 'admin/chatBot', component: CustomWidgetComponent}
 ];
 
 @NgModule({
