@@ -1,0 +1,58 @@
+<!-- Chat Container -->
+<div class="chat-container" [ngClass]="{ 'fullscreen': isFullScreen }" [ngStyle]="{
+  'width': botWidget.iconWidth + 'px',
+  'height': botWidget.iconHeight + 'px'
+}" *ngIf="isChatOpen">
+  <!-- Header -->
+  <div class="chat-header d-flex align-items-center border-bottom p-3">
+    <div class="flex-fill">
+      <p class="mb-0 fw-bold">{{ activeUser?.name || 'Unknown User' }}</p>
+      <p class="mb-0 text-muted" (click)="bringBotOnline.emit()">{{ connectionStatus }}</p>
+    </div>
+    <!-- Fullscreen Toggle -->
+    <button class="btn btn-outline-secondary me-2" (click)="toggleFullScreen()" title="Popup">
+      <span class="glyphicon glyphicon-fullscreen"></span>
+    </button>
+    <div class="custom-dropdown">
+      <button class="dropdown-toggle-btn" (click)="toggleDropdown()"> X </button>
+    </div>
+  </div>
+  <!-- <div *ngIf="showDropdown">
+    <ul>
+      <li (click)="getTranscript(); closeDropdown()">Chat Transcript</li>
+      <li (click)="onRating(); closeDropdown()">Rating</li>
+      <li (click)="openPopup(); closeDropdown()">Popup</li>
+      <li (click)="end(); closeDropdown()">End Chat</li>
+    </ul>
+  </div> -->
+  <!-- Chat Messages -->
+  <div class="chat-content" #chatContent>
+    <div *ngFor="let msg of messages" class="message-wrapper" [ngClass]="isUser(msg) ? 'user' : 'bot'">
+      <img class="avatar"
+        [src]="isUser(msg) ? activeUser?.image || 'assets/images/faces/15.jpg' : 'assets/images/bot-icon.png'"
+        alt="avatar" />
+      <div class="message-block">
+        <div class="message" [ngClass]="isUser(msg) ? 'user' : 'bot'">
+          {{ msg.content }}
+        </div>
+        <div class="timestamp">
+          {{ msg.sentDate | date: 'shortTime' }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Chat Input -->
+  <div class="chat-input">
+    <input [(ngModel)]="userMessage" (keydown.enter)="onEnterPressed($event)" placeholder="Type your message..." />
+    <button (click)="sendMessage()" [disabled]="!userMessage.trim()">Send</button>
+  </div>
+</div>
+
+<!-- Chat Launcher Button -->
+<div class="chat-launcher" *ngIf="!isChatOpen" (click)="toggleChat()" [ngStyle]="{ 'background': botWidget.IconBG}">
+
+  <span *ngIf="!botWidget.Iconurl">💬</span>
+ <div *ngIf="botWidget.Iconurl">
+    <img [src]="botWidget.Iconurl" alt="Bot" class="chat-icon-img">
+  </div>
+</div>

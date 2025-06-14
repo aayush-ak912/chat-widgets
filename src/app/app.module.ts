@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -42,6 +44,8 @@ import { AngularIconComponent } from './components/docs/icons/angular-icon/angul
 import { ChatBotIconComponent } from './dashboard/icons/chat-bot-icon/chat-bot-icon.component';
 import { ChatbotComponent } from './pages/chatbot/chatbot.component';
 import { CustomWidgetComponent } from './pages/custom-widget/custom-widget.component';
+import { BubblepopComponent } from './botSkins/bubblepop/bubblepop.component';
+import { ClassicDropChatComponent } from './botSkins/classic-drop-chat/classic-drop-chat.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -83,9 +87,11 @@ import { CustomWidgetComponent } from './pages/custom-widget/custom-widget.compo
     AngularIconComponent,
     ChatBotIconComponent,
     ChatbotComponent,
-    CustomWidgetComponent
+    CustomWidgetComponent,
+    BubblepopComponent,
+    ClassicDropChatComponent
   ],
-  imports: [BrowserModule, AppRoutingModule],
+  imports: [BrowserModule,CommonModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })
