@@ -1,1 +1,73 @@
-<p>custom-widget works!</p>
+<div class="main-container">
+    <div class="bar"></div>
+    <div class="d-flex gap-3 ps-2">
+        <div class="col-md-3 left-box">
+            <div class="form-floating">
+                <input type="text" class="form-control w-s" name="BotName" maxlength="20" />
+                <label for="BotName">Title</label>
+            </div>
+            <div class="form-floating mt-3">
+                <select class="form-control w-s" [(ngModel)]="layout" name="BotName" maxlength="20">
+                    <option disabled> Select Layout</option>
+                    <option value="1"> Bubble Pop</option>
+                    <option value="2"> Classic Drop Chat</option>
+                </select>
+                <label for="BotName">Select Chat Layout</label>
+            </div>
+            <div class="form-floating mt-3">
+                <input class="form-control w-s" type="text" [(ngModel)]="wMsg" name="wmsg" />
+                <label for="wmsg">Welcome Message</label>
+            </div>
+            <div class="form-check form-switch fs-6 mt-4">
+                <input type="checkbox" role="switch" id="bpintegration" [(ngModel)]="BotConfig.brightPattern.Enable"
+                    class="form-check-input">
+                <label for="bpintegration" class="z-0 form-check-label">Bright Pattern Integration</label>
+            </div>
+            <div class="form-check form-switch fs-6 mt-4" *ngIf="BotConfig.brightPattern.Enable">
+                <input type="checkbox" role="switch" id="enableFormSwitch" [(ngModel)]="BotConfig.formEnable"
+                    class="form-check-input">
+                <label for="enableFormSwitch" class="z-0 form-check-label">Enable Form</label>
+            </div>
+
+            <div *ngIf="BotConfig.formEnable">
+                <div class="form-floating mt-3">
+                    <select class="form-select w-s" name="numberOfFields" id="numberOfFields"
+                        [(ngModel)]="bForm.inputfields" (ngModelChange)="onInputFieldsChange($event)">
+                        <option *ngFor="let num of [].constructor(5); let i = index" [value]="i + 1">
+                            {{ i + 1 }}
+                        </option>
+                    </select>
+                    <label for="numberOfFields">No. Of Fields in Forms</label>
+                </div>
+
+                <!-- Render Inputs -->
+                <div *ngFor="let field of bForm.fields; let i = index" class="mt-3 w-s">
+                    <div class="row g-2 align-items-center">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="Field {{ i + 1 }} Name"
+                                [(ngModel)]="field.name" name="fieldName{{ i }}" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <select class="form-select" [(ngModel)]="field.type" name="fieldType{{ i }}">
+                                <option value="text">Text</option>
+                                <option value="number">Number</option>
+                                <option value="date">Date</option>
+                                <option value="email">Email</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 right-box">
+            <div *ngIf="layout ==1">
+                <app-bubblepop></app-bubblepop>
+            </div>
+            <div *ngIf="layout ==2">
+                <app-classic-drop-chat></app-classic-drop-chat>
+            </div>
+        </div>
+    </div>
+</div>
