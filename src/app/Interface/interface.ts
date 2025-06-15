@@ -83,6 +83,8 @@ export interface BotConfig {
   id: string;
   entityId: string;
   botName: string;
+  wmsg:string;
+  formEnable:boolean;
   enableVoiceChat: boolean;
   assemblyAI: any | null;
   openAI: any | null;
@@ -114,6 +116,10 @@ export interface Widget {
   updatedAt: Date;            
 }
 
+export interface botForm {
+  inputfields: number;
+  fields: { name: string; type: string }[];
+}
 
 
 export interface ReleaseNote {
@@ -169,3 +175,7 @@ interface GroupData {
   badge?: number;
 }
 
+export interface Message {
+  sender: string;
+  message: string;
+}
