@@ -101,7 +101,7 @@ export interface BotConfig {
   tokensBilled: number;
   allowOverage: boolean;
   //layout related 
-  // layoutId:number;
+  layoutId:number;
 }
 
 export interface Widget {

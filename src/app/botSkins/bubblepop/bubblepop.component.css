@@ -12,14 +12,14 @@
 
 .chat-window {
   position: absolute;
-  bottom: 60px; /* just above the header */
+  bottom: 60px;
   right: 0;
   min-width: 300px;
   max-height: 400px;
   overflow-y: auto;
   /* background: white; */
-  border: 1px solid #ccc;
-  border-radius: 8px 8px 0 0;
+  /* border: 1px solid #ccc; */
+  /* border-radius: 8px 8px 0 0; */
   padding: 10px;
   z-index: 100;
 }
@@ -76,10 +76,10 @@
   position: absolute;
   bottom: 60px;
   right: 0;
-  min-width: 300px;
+  max-width: 350px;
   max-height: 400px;
   /* background: white; */
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
   border-radius: 8px 8px 0 0;
   display: flex;
   flex-direction: column;
@@ -102,4 +102,9 @@
   border-top: 1px solid #eee;
   padding-top: 8px;
   /* background: white; */
+}
+
+.agent-bubble {
+  background-color: #ffe9b8;
+  color: #333;
 }

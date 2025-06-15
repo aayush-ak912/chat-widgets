@@ -16,11 +16,16 @@
 </div>
 <!-- Chat message window -->
 <div *ngIf="startChat" class="chat-window d-flex flex-column">
-  
+
   <!-- Scrollable message list -->
   <div class="message-list flex-grow-1 overflow-auto mb-2" #scrollContainer>
-    <div *ngFor="let msg of Messages" [ngClass]="{'text-start': msg.sender === 'bot', 'text-end': msg.sender === 'user'}">
-      <div class="bubble" [ngClass]="{'bot-bubble': msg.sender === 'bot', 'user-bubble': msg.sender === 'user'}">
+    <div *ngFor="let msg of Messages"
+      [ngClass]="{'text-start': msg.sender !== 'user', 'text-end': msg.sender === 'user'}">
+      <div class="bubble" [ngClass]="{
+         'bot-bubble': msg.sender === 'bot',
+         'agent-bubble': msg.sender === 'agent',
+         'user-bubble': msg.sender === 'user'
+       }">
         {{ msg.message }}
       </div>
     </div>
@@ -28,8 +33,8 @@
 
   <!-- Fixed input field -->
   <div class="chat-footer d-flex align-items-center">
-    <input type="text" class="form-control me-2" [(ngModel)]="inputMessage" (keyup.enter)="sendUserMessage()" placeholder="Type a message" />
+    <input type="text" class="form-control me-2" [(ngModel)]="inputMessage" (keyup.enter)="sendUserMessage()"
+      placeholder="Type a message" />
     <button class="btn btn-primary" (click)="sendUserMessage()">Send</button>
   </div>
 </div>
-
