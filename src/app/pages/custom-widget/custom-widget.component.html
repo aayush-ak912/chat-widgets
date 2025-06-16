@@ -7,7 +7,7 @@
                 <label for="BotName">Title</label>
             </div>
             <div class="form-floating mt-3">
-                <select class="form-control w-s" [(ngModel)]="layout" name="BotName" maxlength="20">
+                <select class="form-control w-s" [(ngModel)]="BotConfig.layoutId" name="BotName" maxlength="20">
                     <option disabled> Select Layout</option>
                     <option value="1"> Bubble Pop</option>
                     <option value="2"> Classic Drop Chat</option>
@@ -15,7 +15,7 @@
                 <label for="BotName">Select Chat Layout</label>
             </div>
             <div class="form-floating mt-3">
-                <input class="form-control w-s" type="text" [(ngModel)]="wMsg" name="wmsg" />
+                <input class="form-control w-s" type="text" [(ngModel)]="BotConfig.wmsg" name="wmsg" />
                 <label for="wmsg">Welcome Message</label>
             </div>
             <div class="form-check form-switch fs-6 mt-4">
@@ -62,12 +62,17 @@
         </div>
 
         <div class="col-md-6 right-box">
-            <div *ngIf="layout ==1">
-                <app-bubblepop></app-bubblepop>
+            <div class="parent" *ngIf="BotConfig.layoutId==1">
+                <app-bubblepop [botConfig]="BotConfig" [bForm]="bForm"></app-bubblepop>
             </div>
-            <div *ngIf="layout ==2">
+            <div *ngIf="BotConfig.layoutId ==2">
                 <app-classic-drop-chat></app-classic-drop-chat>
             </div>
         </div>
     </div>
+    <div class="w-100 mt-3 d-flex justify-content-center gap-3">
+        <button class="btn btn-save" (click)="saveConfig()">Save</button>
+        <button class="btn btn-cancel">Cancel</button>
+    </div>
+
 </div>

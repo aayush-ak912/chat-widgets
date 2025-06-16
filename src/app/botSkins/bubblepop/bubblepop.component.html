@@ -1,1 +1,40 @@
-<p>bubblepop works very well!</p>
+<!-- Chat header icon -->
+<div class="chaticon" (click)="toggleChat()">
+  <div class="d-flex justify-content-between align-items-center">
+    <div class="bot-title">
+      <span>{{ botConfig.botName || "Vokal's Bot" }}</span>
+    </div>
+    <div class="actions position-relative" (click)="toggleOptions($event)">
+      <i class="bi bi-three-dots-vertical"></i>3
+      <div *ngIf="showOptions" class="options-dropdown">
+        <div (click)="openPopup()">Open in Popup</div>
+        <div (click)="sendFeedback()">Feedback</div>
+        <div (click)="endChat()">End Chat</div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Chat message window -->
+<div *ngIf="startChat" class="chat-window d-flex flex-column">
+
+  <!-- Scrollable message list -->
+  <div class="message-list flex-grow-1 overflow-auto mb-2" #scrollContainer>
+    <div *ngFor="let msg of Messages"
+      [ngClass]="{'text-start': msg.sender !== 'user', 'text-end': msg.sender === 'user'}">
+      <div class="bubble" [ngClass]="{
+         'bot-bubble': msg.sender === 'bot',
+         'agent-bubble': msg.sender === 'agent',
+         'user-bubble': msg.sender === 'user'
+       }">
+        {{ msg.message }}
+      </div>
+    </div>
+  </div>
+
+  <!-- Fixed input field -->
+  <div class="chat-footer d-flex align-items-center">
+    <input type="text" class="form-control me-2" [(ngModel)]="inputMessage" (keyup.enter)="sendUserMessage()"
+      placeholder="Type a message" />
+    <button class="btn btn-primary" (click)="sendUserMessage()">Send</button>
+  </div>
+</div>

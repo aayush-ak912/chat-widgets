@@ -83,6 +83,7 @@ export interface BotConfig {
   id: string;
   entityId: string;
   botName: string;
+  wmsg:string;
   formEnable:boolean;
   enableVoiceChat: boolean;
   assemblyAI: any | null;
@@ -100,7 +101,7 @@ export interface BotConfig {
   tokensBilled: number;
   allowOverage: boolean;
   //layout related 
-  // layoutId:number;
+  layoutId:number;
 }
 
 export interface Widget {
@@ -174,3 +175,7 @@ interface GroupData {
   badge?: number;
 }
 
+export interface Message {
+  sender: string;
+  message: string;
+}
