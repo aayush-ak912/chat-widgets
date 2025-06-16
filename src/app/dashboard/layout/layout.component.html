@@ -8,7 +8,7 @@
       <top-bar />
       <main class="h-screen overflow-auto bg-gray-100 px-2 pb-36 pt-4 md:px-4 md:pb-8 lg:rounded-tl-3xl lg:px-6">
         <ng-content />
-        <div *ngIf="!BotConfig.layoutId">
+        <div *ngIf="BotConfig.layoutId==2">
           <app-chatbot></app-chatbot>
         </div>
 
